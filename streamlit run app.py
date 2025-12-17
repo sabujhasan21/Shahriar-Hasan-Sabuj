@@ -2,10 +2,10 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # ===============================
-# Page Configuration
+# Page Config
 # ===============================
 st.set_page_config(
-    page_title="Profile | Md Shahriar Hasan Sabuj",
+    page_title="Digital ID | Md Shahriar Hasan Sabuj",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -22,12 +22,13 @@ header {visibility: hidden;}
 """, unsafe_allow_html=True)
 
 # ===============================
-# HTML + CSS (SAFE RENDER)
+# HTML + CSS + AUTO FULLSCREEN JS
 # ===============================
 html_code = """
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <style>
 body {
     margin: 0;
@@ -35,6 +36,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Card */
 .profile-card {
     background: white;
     width: 60%;
@@ -73,6 +75,7 @@ body {
     color: #0b2545;
 }
 
+/* Mobile */
 @media (max-width: 768px) {
     .profile-card {
         width: 90%;
@@ -81,24 +84,45 @@ body {
     }
 }
 </style>
+
+<script>
+// ===== AUTO FULLSCREEN (KIOSK MODE) =====
+function goFullScreen() {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+    }
+}
+
+// Try auto fullscreen
+window.onload = function () {
+    setTimeout(goFullScreen, 500);
+};
+</script>
+
 </head>
-
 <body>
-    <div class="profile-card">
-        <div class="name">Md Shahriar Hasan Sabuj</div>
-        <div class="designation">Assistant Officer (Student Affairs)</div>
-        <div class="line"></div>
 
-        <div class="info">
-            <p><span class="label">Email:</span> info.dusc@daffodilvarsity.edu.bd</p>
-            <p><span class="label">Phone:</span> 01400808455</p>
-        </div>
+<div class="profile-card">
+    <div class="name">Md Shahriar Hasan Sabuj</div>
+    <div class="designation">Assistant Officer (Student Affairs)</div>
+    <div class="line"></div>
+
+    <div class="info">
+        <p><span class="label">Email:</span> info.dusc@daffodilvarsity.edu.bd</p>
+        <p><span class="label">Phone:</span> 01400808455</p>
     </div>
+</div>
+
 </body>
 </html>
 """
 
 # ===============================
-# Render HTML (IMPORTANT)
+# Render HTML
 # ===============================
-components.html(html_code, height=600, scrolling=False)
+components.html(html_code, height=700, scrolling=False)
