@@ -71,7 +71,7 @@ def digital_id_page():
     .name {font-size:34px; font-weight:bold; color:#0b2545; border-right:3px solid #0b2545; width: fit-content; white-space: nowrap; overflow: hidden; animation: typing 2.8s steps(30), blink 0.7s infinite;}
     @keyframes typing {from{width:0;} to{width:100%;}}
     @keyframes blink {50%{border-color:transparent;}}
-    .designation {font-size:18px; color:#555; margin:20px 0 25px; opacity:0; animation: fadeIn 1s ease forwards; animation-delay:2.8s;}
+    .designation {font-size:18px; color:#000000; margin:10px 0 25px; opacity:0; animation: fadeIn 1s ease forwards; animation-delay:2.8s;}
     .line {height:2px; background:#0b2545; width:0; animation: lineGrow 1s ease forwards; animation-delay:3.2s;}
     @keyframes lineGrow {to{width:100%;}}
     .info p {font-size:18px; line-height:2; opacity:0; transform: translateX(-20px); animation: infoIn 0.8s ease forwards;}
