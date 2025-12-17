@@ -22,13 +22,14 @@ header {visibility: hidden;}
 """, unsafe_allow_html=True)
 
 # ===============================
-# HTML + CSS + JS (ANIMATED)
+# HTML + CSS + JS (With Social Links)
 # ===============================
 html_code = """
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 body {
     margin: 0;
@@ -39,7 +40,6 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Background animation */
 @keyframes gradientBG {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
@@ -59,7 +59,6 @@ body {
     animation: cardIn 1.2s ease forwards;
 }
 
-/* Card entrance */
 @keyframes cardIn {
     to {
         opacity: 1;
@@ -67,7 +66,6 @@ body {
     }
 }
 
-/* Hover effect */
 .profile-card:hover {
     transform: translateY(-6px) scale(1.01);
     box-shadow: 0 20px 45px rgba(0,0,0,0.25);
@@ -85,14 +83,8 @@ body {
     animation: typing 2.8s steps(30), blink 0.7s infinite;
 }
 
-/* Typing animation */
-@keyframes typing {
-    from {width: 0;}
-    to {width: 100%;}
-}
-@keyframes blink {
-    50% {border-color: transparent;}
-}
+@keyframes typing { from {width: 0;} to {width: 100%;} }
+@keyframes blink { 50% {border-color: transparent;} }
 
 .designation {
     font-size: 18px;
@@ -111,9 +103,7 @@ body {
     animation-delay: 3.2s;
 }
 
-@keyframes lineGrow {
-    to {width: 100%;}
-}
+@keyframes lineGrow { to {width: 100%;} }
 
 .info p {
     font-size: 18px;
@@ -122,20 +112,31 @@ body {
     transform: translateX(-20px);
     animation: infoIn 0.8s ease forwards;
 }
-
 .info p:nth-child(1) {animation-delay: 3.8s;}
 .info p:nth-child(2) {animation-delay: 4.2s;}
 
 @keyframes infoIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    to {opacity:1; transform:translateX(0);}
 }
 
-.label {
-    font-weight: bold;
+.label { font-weight: bold; color: #0b2545; }
+
+/* Social links */
+.social-links {
+    margin-top: 25px;
+    opacity: 0;
+    animation: infoIn 0.8s ease forwards;
+    animation-delay: 4.5s;
+}
+.social-links a {
+    text-decoration: none;
     color: #0b2545;
+    margin-right: 20px;
+    font-size: 22px;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: #1976d2;
 }
 
 /* Mobile */
@@ -145,14 +146,11 @@ body {
         margin: 60px auto;
         padding: 30px;
     }
-    .name {
-        font-size: 28px;
-    }
+    .name { font-size: 28px; }
 }
 </style>
 
 <script>
-// AUTO FULLSCREEN
 function goFullScreen() {
     const elem = document.documentElement;
     if (elem.requestFullscreen) elem.requestFullscreen();
@@ -172,13 +170,17 @@ window.onload = () => setTimeout(goFullScreen, 600);
         <p><span class="label">Email:</span> info.dusc@daffodilvarsity.edu.bd</p>
         <p><span class="label">Phone:</span> 01400808455</p>
     </div>
+
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="https://www.facebook.com/sabuj22" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
 </div>
 
 </body>
 </html>
 """
 
-# ===============================
-# Render HTML
-# ===============================
+# Render
 components.html(html_code, height=800, scrolling=False)
