@@ -39,11 +39,11 @@ body {
     padding: 40px 60px;
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    text-align: center;
+    text-align: left; /* left-aligned text */
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1.2s forwards;
-    max-width: 700px; /* increased width */
+    max-width: 700px;
     width: 90%;
 }
 
@@ -90,28 +90,18 @@ body {
 .social-links a {
     text-decoration:none;
     color:#0b2545;
-    margin:0 10px;
+    margin-right:10px;
     font-size:22px;
     transition: color 0.3s;
 }
 .social-links a:hover {color:#1976d2;}
 
 /* Animations */
-@keyframes fadeInUp {
-    to {opacity:1; transform:translateY(0);}
-}
-@keyframes typing {
-    to {width: 480px;} /* increased width for full name */
-}
-@keyframes blink {
-    50% {border-color: transparent;}
-}
-@keyframes slideUp {
-    to {opacity:1; transform:translateY(0);}
-}
-@keyframes fadeIn {
-    to {opacity:1;}
-}
+@keyframes fadeInUp {to {opacity:1; transform:translateY(0);}}
+@keyframes typing {to {width: 480px;}}
+@keyframes blink {50% {border-color: transparent;}}
+@keyframes slideUp {to {opacity:1; transform:translateY(0);}}
+@keyframes fadeIn {to {opacity:1;}}
 </style>
 </head>
 <body>
