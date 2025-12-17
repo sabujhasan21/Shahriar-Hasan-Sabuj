@@ -36,13 +36,15 @@ body {
 /* Card */
 .profile-card {
     background: white;
-    padding: 40px 50px;
+    padding: 40px 60px;
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     text-align: center;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1.2s forwards;
+    max-width: 700px; /* increased width */
+    width: 90%;
 }
 
 /* Name typing effect */
@@ -54,7 +56,7 @@ body {
     width:0;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(30) forwards, blink 0.7s infinite step-end;
+    animation: typing 2s steps(40) forwards, blink 0.7s infinite step-end;
 }
 
 /* Designation slide-up */
@@ -99,7 +101,7 @@ body {
     to {opacity:1; transform:translateY(0);}
 }
 @keyframes typing {
-    to {width: 280px;} /* approximate length of name */
+    to {width: 480px;} /* increased width for full name */
 }
 @keyframes blink {
     50% {border-color: transparent;}
