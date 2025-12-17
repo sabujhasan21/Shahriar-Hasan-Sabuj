@@ -1,84 +1,127 @@
 import streamlit as st
+from textwrap import dedent
 
-# ===============================
-# Page Configuration (Full Screen)
-# ===============================
+# =================================
+# Page Config (Full Screen)
+# =================================
 st.set_page_config(
-    page_title="Profile | Md Shahriar Hasan Sabuj",
+    page_title="Digital ID | Md Shahriar Hasan Sabuj",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# ===============================
-# Hide Default Streamlit UI
-# ===============================
+# =================================
+# Hide Streamlit Default UI
+# =================================
 st.markdown("""
 <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
-.block-container {
-    padding: 0rem;
-}
+.block-container { padding: 0rem; }
 </style>
 """, unsafe_allow_html=True)
 
-# ===============================
-# Custom Background (Gradient)
-# ===============================
+# =================================
+# Auto Fullscreen (Kiosk Mode)
+# =================================
+st.markdown("""
+<script>
+document.documentElement.requestFullscreen();
+</script>
+""", unsafe_allow_html=True)
+
+# =================================
+# App Styling
+# =================================
 st.markdown("""
 <style>
 body {
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     font-family: Arial, sans-serif;
 }
-.profile-card {
+
+.card {
     background: white;
-    width: 60%;
-    margin: 120px auto;
-    padding: 45px 55px;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    width: 420px;
+    margin: 70px auto;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
 }
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
 .name {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #0b2545;
 }
-.designation {
-    font-size: 18px;
+
+.role {
+    font-size: 15px;
     color: #555;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
-.line {
-    height: 2px;
-    background: #0b2545;
-    width: 100%;
-    margin-bottom: 25px;
-}
+
 .info {
-    font-size: 18px;
-    line-height: 2;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.8;
 }
+
 .label {
     font-weight: bold;
     color: #0b2545;
 }
-@media (max-width: 768px) {
-    .profile-card {
-        width: 90%;
-        margin: 60px auto;
-        padding: 30px;
-    }
+
+.buttons {
+    width: 420px;
+    margin: 10px auto;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ===============================
+# =================================
+# vCard Content
+# =================================
+vcard = dedent("""
+BEGIN:VCARD
+VERSION:3.0
+FN:Md Shahriar Hasan Sabuj
+TITLE:Assistant Officer (Student Affairs)
+ORG:Daffodil University School & College
+TEL:01400808455
+EMAIL:info.dusc@daffodilvarsity.edu.bd
+END:VCARD
+""")
+
+# =================================
+# CV Text (Simple)
+# =================================
+cv_text = dedent("""
+Md Shahriar Hasan Sabuj
+Assistant Officer (Student Affairs)
+
+Organization:
+Daffodil University School & College
+
+Email: info.dusc@daffodilvarsity.edu.bd
+Phone: 01400808455
+""")
+
+# =================================
 # Profile Card UI
-# ===============================
+# =================================
 st.markdown("""
 <div class="card">
+    <img class="avatar" src="https://i.imgur.com/6VBx3io.png">
     <div class="name">Md Shahriar Hasan Sabuj</div>
     <div class="role">Assistant Officer (Student Affairs)</div>
 
@@ -88,3 +131,24 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+# =================================
+# Download Buttons
+# =================================
+col1, col2 = st.columns(2)
+
+with col1:
+    st.download_button(
+        "📇 Download vCard",
+        vcard,
+        file_name="Md_Shahriar_Sabuj.vcf",
+        mime="text/vcard"
+    )
+
+with col2:
+    st.download_button(
+        "📄 Download CV",
+        cv_text,
+        file_name="Md_Shahriar_Sabuj_CV.txt",
+        mime="text/plain"
+    )
