@@ -1,81 +1,83 @@
 import streamlit as st
-import base64
 
-# Page config (FULL SCREEN)
+# ===============================
+# Page Configuration (Full Screen)
+# ===============================
 st.set_page_config(
     page_title="Profile | Md Shahriar Hasan Sabuj",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Hide Streamlit default UI
+# ===============================
+# Hide Default Streamlit UI
+# ===============================
 st.markdown("""
-    <style>
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
-        .block-container {
-            padding: 0rem;
-        }
-    </style>
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+.block-container {
+    padding: 0rem;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Load background image
-def get_base64_image(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
-
-bg_image = get_base64_image("background.png")  # image name
-
-# Custom UI
-st.markdown(f"""
+# ===============================
+# Custom Background (Gradient)
+# ===============================
+st.markdown("""
 <style>
-body {{
-    background-image: url("data:image/png;base64,{bg_image}");
-    background-size: cover;
-    background-position: center;
-}}
-
-.profile-card {{
+body {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    font-family: Arial, sans-serif;
+}
+.profile-card {
     background: white;
     width: 60%;
     margin: 120px auto;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    font-family: Arial, sans-serif;
-}}
-
-.name {{
+    padding: 45px 55px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+.name {
     font-size: 32px;
     font-weight: bold;
     color: #0b2545;
-}}
-
-.designation {{
+}
+.designation {
     font-size: 18px;
     color: #555;
     margin-bottom: 25px;
-}}
-
-.line {{
+}
+.line {
     height: 2px;
     background: #0b2545;
     width: 100%;
     margin-bottom: 25px;
-}}
-
-.info {{
+}
+.info {
     font-size: 18px;
     line-height: 2;
-}}
-
-.label {{
+}
+.label {
     font-weight: bold;
     color: #0b2545;
-}}
+}
+@media (max-width: 768px) {
+    .profile-card {
+        width: 90%;
+        margin: 60px auto;
+        padding: 30px;
+    }
+}
 </style>
+""", unsafe_allow_html=True)
 
+# ===============================
+# Profile Card UI
+# ===============================
+st.markdown("""
 <div class="profile-card">
     <div class="name">Md Shahriar Hasan Sabuj</div>
     <div class="designation">Assistant Officer (Student Affairs)</div>
