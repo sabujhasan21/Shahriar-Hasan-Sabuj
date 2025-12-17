@@ -39,7 +39,7 @@ body {
     padding: 40px 60px;
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    text-align: left; /* left-aligned text */
+    text-align: left;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1.2s forwards;
@@ -94,7 +94,31 @@ body {
     font-size:22px;
     transition: color 0.3s;
 }
-.social-links a:hover {color:#1976d2;}
+.social-links a:hover {color:#1976d2; cursor:pointer;}
+
+/* Popup modal */
+#popup {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+}
+#popupContent {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    margin: 5% auto;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#popup iframe {width:100%; height:100%; border:none;}
+#popup button {
+    position:absolute; top:10px; right:10px;
+    padding:6px 12px; background:#1976d2; color:white; border:none; border-radius:5px; cursor:pointer;
+}
 
 /* Animations */
 @keyframes fadeInUp {to {opacity:1; transform:translateY(0);}}
@@ -113,12 +137,31 @@ body {
         <p>Phone: 01400808455</p>
     </div>
     <div class="social-links">
-        <a href="https://www.facebook.com/sabuj22" target="_blank"><i class="fab fa-facebook-square"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a onclick="openPopup('https://example.com')" ><i class="fab fa-facebook-square"></i></a>
+        <a onclick="openPopup('https://example.com')" ><i class="fab fa-linkedin"></i></a>
     </div>
 </div>
+
+<!-- Popup modal -->
+<div id="popup">
+    <div id="popupContent">
+        <button onclick="closePopup()">Close</button>
+        <iframe id="popupFrame" src=""></iframe>
+    </div>
+</div>
+
+<script>
+function openPopup(url){
+    document.getElementById('popup').style.display='block';
+    document.getElementById('popupFrame').src=url;
+}
+function closePopup(){
+    document.getElementById('popup').style.display='none';
+    document.getElementById('popupFrame').src='';
+}
+</script>
 </body>
 </html>
 """
 
-components.html(html_code, height=500, scrolling=False)
+components.html(html_code, height=600, scrolling=False)
