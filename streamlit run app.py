@@ -78,10 +78,9 @@ body {
 # Profile Card UI
 # ===============================
 st.markdown("""
-<div class="profile-card">
+<div class="card">
     <div class="name">Md Shahriar Hasan Sabuj</div>
-    <div class="designation">Assistant Officer (Student Affairs)</div>
-    <div class="line"></div>
+    <div class="role">Assistant Officer (Student Affairs)</div>
 
     <div class="info">
         <p><span class="label">Email:</span> info.dusc@daffodilvarsity.edu.bd</p>
